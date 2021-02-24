@@ -1506,7 +1506,7 @@ data:
         - "--run-validation"
         - "--skip-rule-apply"
         {{ end -}}
-        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `Always` }}"
+        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `IfNotPresent` }}"
       {{- if .ProxyConfig.ProxyMetadata }}
         env:
         {{- range $key, $value := .ProxyConfig.ProxyMetadata }}
@@ -1575,7 +1575,7 @@ data:
       {{- else }}
         image: "{{ .Values.global.hub }}/{{ .Values.global.proxy_init.image }}:{{ .Values.global.tag }}"
       {{- end }}
-        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `Always` }}"
+        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `IfNotPresent` }}"
         resources: {}
         securityContext:
           allowPrivilegeEscalation: true
@@ -1738,7 +1738,7 @@ data:
         - name: {{ $key }}
           value: "{{ $value }}"
         {{- end }}
-        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `Always` }}"
+        imagePullPolicy: "{{ valueOrDefault .Values.global.imagePullPolicy `IfNotPresent` }}"
         {{ if ne (annotation .ObjectMeta `status.sidecar.istio.io/port` .Values.global.proxy.statusPort) `0` }}
         readinessProbe:
           httpGet:
@@ -4582,7 +4582,7 @@ data:
         includes:
         - '*'
       image_name: quay.io/kiali/kiali
-      image_pull_policy: Always
+      image_pull_policy: IfNotPresent
       image_pull_secrets: []
       image_version: v1.26
       ingress_enabled: false
@@ -4914,7 +4914,7 @@ spec:
       serviceAccountName: kiali
       containers:
       - image: "quay.io/kiali/kiali:v1.23"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: kiali
         command:
         - "/opt/kiali/kiali"
