@@ -1,0 +1,2 @@
+ADD DNS ENTRY ENTRY IN THE FRONT OF ANY WORKER NODE hotel.example.com and tea.example.com
+access hotel.example.com:31380 and tea.example.com:31380

@@ -1,0 +1,14 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: first-destination-rule
+  namespace: default
+spec:
+  host: nginx-svc
+  subsets:
+    - labels:
+        version: v1
+      name: oldapp-group
+    - labels:
+        version: v2
+      name: newapp-group

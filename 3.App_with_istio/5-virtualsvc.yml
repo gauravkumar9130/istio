@@ -1,0 +1,18 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: my-virtualsvc
+  namespace: default
+spec:
+  hosts:
+    - nginx-svc  
+  http:
+    - route:
+        - destination:
+            host: nginx-svc 
+            subset: newapp-group  
+          weight: 10
+        - destination:
+            host: nginx-svc
+            subset: oldapp-group
+          weight: 90

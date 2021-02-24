@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: coffee-app
-  name: coffee-app
+  name: tea-app
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
-      app: coffee-app
+      app: website
   template:
     metadata:
       labels:
-        app: coffee-app
+        app: website
+        web: tea
     spec:
       containers:
-      - image: quay.io/gauravkumar9130/coffee
-        name: coffee
+      - image: quay.io/gauravkumar9130/tea
+        name: tea
         ports:
         - containerPort: 80

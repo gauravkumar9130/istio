@@ -1,0 +1,15 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: hotel-virtualsvc
+  namespace: default
+spec:
+  hosts:      # which incoming host are we applying the proxy rules to???
+    - "hotel.example.com" # Copy the value in the gateway hosts - usually a Domain Name
+  gateways:
+    - ingress-gateway-configuration
+  http:
+    - route:
+      - destination:
+            host: hotel-svc
+            subset: hotel

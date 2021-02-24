@@ -1,0 +1,3 @@
+ADD DNS ENTRY ENTRY IN THE FRONT OF ANY WORKER NODE
+access using hotel.example.com:31380 
+31380 -> port number of istio service

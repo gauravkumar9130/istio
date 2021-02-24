@@ -1,18 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: tea-app
   name: tea-app
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
-      app: tea-app
+      app: website
   template:
     metadata:
       labels:
-        app: tea-app
+        app: website
+        web: tea
     spec:
       containers:
       - image: quay.io/gauravkumar9130/tea
