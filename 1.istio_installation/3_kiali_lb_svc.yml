@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: kiali-external-svc
+ namespace: istio-system
+spec:
+ type: LoadBalancer
+ ports:
+ - name: http
+   port: 20001
+   protocol: TCP
+   targetPort: 20001
+ - name: http-metrics
+   port: 9090
+   protocol: TCP
+   targetPort: 20001
+ selector:
+  app.kubernetes.io/instance: kiali
+  app.kubernetes.io/name: kiali
