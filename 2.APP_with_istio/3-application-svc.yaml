@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: nginx-svc
 spec:
+  type: LoadBalancer
   ports:
   - port: 80
-    protocol: TCP
-    targetPort: 80
+    name: http
   selector:
     app: nginx
