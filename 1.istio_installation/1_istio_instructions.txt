@@ -1,18 +1,18 @@
 #!/bin/bash
 curl -L https://istio.io/downloadIstio | sh - 
-cd istio-1.15.3
-export PATH="$PATH:/home/gaurav/demos/istio-1.15.3/bin"
+cd istio-1.25.1
+export PATH="$PATH:/home/gaurav/demos/istio-1.25.1/bin"
 istioctl x precheck 
 istioctl install --set profile=demo -y 
 kubectl get pods -n istio-system 
 
 Install ADDONS: PROMETHEUS AND GRAFANA FOR COLLECTING METRICS
 
-#cd istio-1.15.3/samples/addons
+#cd istio-1.25.1/samples/addons
 #kubectl create -f .
 
 Install Kiali:
 
-#kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.15/samples/addons/kiali.yaml
+#kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.25/samples/addons/kiali.yaml
 
 
